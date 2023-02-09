@@ -33,6 +33,9 @@ def webhook():
     else:
         return 'Wrong event type', 400
 
+@app.route('/error', methods=['get'])
+def make_error():
+    print("haha")
 
 if __name__ == '__main__':
     # app.run(debug=True)
