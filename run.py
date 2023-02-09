@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/home', methods=['GET', 'POST'])
 
 def home_page():
-    text= "Dit is versie 1!"
+    text= "Dit is versie 2!"
     return (text)
 
 @app.route('/update_server', methods=['get'])
