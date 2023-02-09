@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request
+import git
 
 app = Flask(__name__)
 
@@ -10,9 +11,18 @@ def home_page():
     text= "Dit is versie 1!"
     return (text)
 
+@app.route('/update_server', methods=['get'])
+def webhook():
+    if request.method == 'GET':
+        repo = git.Repo('C:/Pythonscripts_Test/testServer')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
 
 
 if __name__ == '__main__':
     # app.run(debug=True)
 
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="172.22.38.4", port=5000)
