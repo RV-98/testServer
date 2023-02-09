@@ -1,7 +1,19 @@
 from flask import Flask, request
 import git
+from logging.handlers import RotatingFileHandler
+import logging
+import time
+import os
 
 app = Flask(__name__)
+
+handler = RotatingFileHandler(os.path.join(app.root_path, 'logs', 'error_log.log'), maxBytes=102400, backupCount=10)
+logging_format = logging.Formatter(
+    '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s')
+
+handler.setFormatter(logging_format)
+app.logger.addHandler(handler)
+
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -25,4 +37,4 @@ def webhook():
 if __name__ == '__main__':
     # app.run(debug=True)
 
-    app.run(debug=True, host="172.22.38.4", port=5000)
+    app.run(debug=True, host="172.22.38.4", port=5003)
