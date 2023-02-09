@@ -20,7 +20,7 @@ app.logger.addHandler(handler)
 @app.route('/home', methods=['GET', 'POST'])
 
 def home_page():
-    text= "Halloe Ralph! Dit is versie 35!"
+    text= "Halloe Ralewrwerwerewph! Dit is versie 35!"
     return (text)
 
 @app.route('/update_server', methods=['get'])
