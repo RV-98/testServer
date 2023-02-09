@@ -8,9 +8,8 @@ app = Flask(__name__)
 @app.route('/home', methods=['GET', 'POST'])
 
 def home_page():
-    text= "Dit is versie 2.5!"
-    return (text)
-
+    text= "hallo ralph! Dit is versie 3.0!"
+    return(text)
 @app.route('/update_server', methods=['get'])
 def webhook():
     if request.method == 'GET':
@@ -25,4 +24,4 @@ def webhook():
 if __name__ == '__main__':
     # app.run(debug=True)
 
-    app.run(debug=True, host="172.22.38.4", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)
